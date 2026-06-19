@@ -3,10 +3,15 @@
 <p align="center">
   <em>Naive → Advanced → Agentic — A evolução prática do RAG em produção</em>
   <br/>
-  <a href="https://github.com/generalrodolfao/rag-agentic-template"><img src="https://img.shields.io/badge/status-production--ready-00154E?style=flat-square" /></a>
+  <a href="https://github.com/generalrodolfao/rag-agentic-template"><img src="https://img.shields.io/github/stars/generalrodolfao/rag-agentic-template?style=flat-square&label=stars&color=F17405" /></a>
+  <a href="https://github.com/generalrodolfao/rag-agentic-template/actions"><img src="https://img.shields.io/github/actions/workflow/status/generalrodolfao/rag-agentic-template/ci.yml?style=flat-square&label=CI&color=F17405" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-00154E?style=flat-square" /></a>
+  <a href="https://www.python.org"><img src="https://img.shields.io/badge/python-3.11%2B-00154E?style=flat-square&logo=python&logoColor=F17405" /></a>
+  <br/>
   <a href="https://www.langfuse.com"><img src="https://img.shields.io/badge/observability-LangFuse-00154E?style=flat-square" /></a>
   <a href="https://docs.ragas.io"><img src="https://img.shields.io/badge/evaluation-RAGAS-00154E?style=flat-square" /></a>
+  <a href="https://langchain.com"><img src="https://img.shields.io/badge/built_with-LangChain-00154E?style=flat-square" /></a>
+  <a href="https://www.langgraph.com"><img src="https://img.shields.io/badge/orchestration-LangGraph-00154E?style=flat-square" /></a>
 </p>
 
 ---
@@ -136,6 +141,18 @@ O script compara os 3 estágios lado a lado com as mesmas perguntas e salva os r
 
 ---
 
+## Testes
+
+```bash
+# Unit tests (sem API key)
+pytest tests/ -v
+
+# Com cobertura
+pytest tests/ -v --cov=src --cov-report=term-missing
+```
+
+---
+
 ## Avaliação
 
 ```bash
@@ -180,9 +197,16 @@ rag-agentic-template/
 │   └── run_ragas.py            # RAGAS evaluation
 ├── examples/
 │   └── quickstart.py           # Comparação dos 3 estágios
+├── tests/
+│   ├── test_pipeline.py        # Testes unitários
+│   └── fixtures/               # Dados de teste
 ├── data/sample_docs/           # Documentos de exemplo
+├── .github/workflows/
+│   └── ci.yml                  # CI: lint + typecheck + test
 ├── .env.example
 ├── .gitignore
+├── pyproject.toml
+├── CONTRIBUTING.md
 └── requirements.txt
 ```
 
