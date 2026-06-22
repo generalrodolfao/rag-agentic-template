@@ -11,23 +11,32 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - run: pip3 install ruff
-      - run: ruff check src/ examples/
+      - run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install ruff
+          ruff check src/ examples/
 
   typecheck:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - run: pip3 install mypy .
-      - run: mypy src/ --ignore-missing-imports
+      - run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install mypy .
+          mypy src/ --ignore-missing-imports
         continue-on-error: true
 
   test:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - run: pip3 install -r requirements.txt
-      - run: pip3 install pytest pytest-cov
-      - run: pytest tests/ -v --cov=src --cov-report=term-missing
+      - run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+          pytest tests/ -v --cov=src --cov-report=term-missing
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || 'sk-test' }}
