@@ -13,7 +13,7 @@ Fluxo:
     → Geração → Reflection → (Refinamento ou Final)
 """
 
-from typing import TypedDict, Annotated, Sequence, Literal
+from typing import TypedDict, Annotated, Literal
 import operator
 
 from langgraph.graph import StateGraph, END
