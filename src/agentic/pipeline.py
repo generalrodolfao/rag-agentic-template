@@ -180,7 +180,7 @@ class AgenticRAG:
             return "retrieve"
         return "grade"
 
-    def _should_refine(self, state: AgentState) -> Literal["refine", "end"]:
+    def _should_refine(self, state: AgentState) -> Literal["refine", "__end__"]:
         needs_refinement = (
             state.get("iteration", 0) < 1
             and state.get("reflection")
@@ -188,7 +188,7 @@ class AgenticRAG:
         )
         if needs_refinement:
             return "refine"
-        return "end"
+        return END
 
     def _build_graph(self):
         builder = StateGraph(AgentState)

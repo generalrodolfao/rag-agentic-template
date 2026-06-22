@@ -13,16 +13,16 @@ Uso:
 
 import os
 from functools import wraps
-from langfuse import LangFuse
+from langfuse import Langfuse
 from langfuse.decorators import langfuse_context, observe
 
 _langfuse = None
 
 
-def get_langfuse() -> LangFuse:
+def get_langfuse() -> Langfuse:
     global _langfuse
     if _langfuse is None:
-        _langfuse = LangFuse(
+        _langfuse = Langfuse(
             public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
             secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
             host=os.getenv("LANGFUSE_HOST", "https://cloud.langfuse.com"),
